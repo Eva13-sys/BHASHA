@@ -2,12 +2,6 @@ import argparse
 import os
 
 def to_character_sequence(tokenized_text: str) -> str:
-    """
-    Converts a tokenized string into a character sequence string.
-    
-    Example: "I am go home ." 
-    becomes: "I SPACE a m SPACE g o SPACE h o m e SPACE ."
-    """
     if not tokenized_text.strip():
         return ""
 
@@ -19,14 +13,11 @@ def to_character_sequence(tokenized_text: str) -> str:
     char_sequence = []
     for char in temp_sequence:
         if char != ' ':
-            # Separate non-space characters (like 'I', 'a', 'm', '.', etc.)
             char_sequence.append(char)
             char_sequence.append(' ')
         else:
-            # Keep spaces that are part of the ' SPACE ' marker.
             char_sequence.append(char)
             
-    # 3. Join the list and remove any trailing space.
     return "".join(char_sequence).strip()
 
 
